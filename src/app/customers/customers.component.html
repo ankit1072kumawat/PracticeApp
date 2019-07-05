@@ -1,15 +1,29 @@
-<!-- <div class="card card-default" *ngFor="let customer of customers" >
-        <div class="card-body card-7-5">
-          <div class="card-left">
-            <img src="https://fillmurray.com/g/320/320" class="img-responsive">
-          </div>
-          <div class="card-right">
-                <div>{{customer.name}}</div>
-                <div>{{customer.mobile_no}}</div></div>
-            <p></p>
-          </div>
-        </div>
-       -->
-      
-      
-  
+<div class="card-deck" *ngFor="let customer of newCustomer" >
+  <div class="col-md-7 col-sm-7">
+  <div class="card">
+    <img class="card-img-top"  [src]='customer.url' width=30% />
+  </div>
+  <div class="col-md-5 col-sm-5">
+    <div class="card-body">
+      <h4 class="card-title">{{customer.name}}</h4>
+      <p class="card-text">{{customer.id}}</p>
+      <p class="card-text">{{customer.mobile_no}}</p>
+      <p class="card-text">{{customer.viewOrders}}</p>
+      <p class="card-text"><small class="text-muted">{{customer.address}}</small></p>
+    </div>
+  </div>
+  </div>
+  <!-- <div class="card-deck" *ngFor="let customer of newCustomer" >  
+<div class="row">
+  <div class="col-md-7 col-sm-7">
+    <img class="card-img-top"  [src]='customer.url' width=30% />
+  </div>
+  <div class="col-md-5 col-sm-7">
+    <h5 class="card-title">{{customer.name}}</h5>
+      <p class="card-text">{{customer.id}}</p>
+      <p class="card-text">{{customer.mobile_no}}</p>
+      <p class="card-text">{{customer.viewOrders}}</p>
+      <p class="card-text"><small class="text-muted">{{customer.address}}</small></p>
+  </div>
+</div>
+</div> -->

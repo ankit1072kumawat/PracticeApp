@@ -9,7 +9,7 @@ import { CustomerService } from '../customer.service';
 export class ListviewComponent implements OnInit {
 
   customers = [];
-  // @Injectable
+ filteredStatus ='';
   constructor(private SecondServices : CustomerService ) { }
 
   ngOnInit() {

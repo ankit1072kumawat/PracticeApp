@@ -1,24 +1,25 @@
-<form class="newForm">
+<form class="newForm" [formGroup]="newCustomerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <input type="email" class="form-control" id="name" formControlName="name">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlInput1">Mobile No</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="exampleFormControlInput1">Mobile no</label>
+        <input type="email" class="form-control" id="mobile" formControlName="mobile">
+        <span *ngIf="!newCustomerForm"></span>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlInput1">Email Id</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="exampleFormControlInput1">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Address</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="address" rows="3" formControlName="address"></textarea>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <label for="exampleFormControlFile1">File</label>
+        <input type="file" class="form-control-file" id="file" formControlName="file" >
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

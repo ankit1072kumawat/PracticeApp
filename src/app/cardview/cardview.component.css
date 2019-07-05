@@ -4,17 +4,28 @@
     width : 50%;
     display : inline-block;
     margin-block-end: 25px
+    
 }
 .thumbnail img {
     width : 50%;
-    margin-left: 10px
+    margin-left: 84px
 }
+    
 .thumbnail {
-    margin-left: 35px
+    margin-left: 35px;
+    margin-inline-end: -142px;
 }
+
 .btn-primary {
     color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;
     margin-right: 15px;
+}
+.row{
+    margin-right: -348px;
+}
+.filter{
+    margin-left: 1500px;
+    padding: 2px
 }
