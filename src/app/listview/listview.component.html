@@ -1,0 +1,13 @@
+<div class="media" *ngFor="let customer of customers">
+        <div class="media-left">
+                <img [src]='customer.url'  class="media-object" style="width:80px"/>
+          <!-- <img src="img_avatar1.png" class="media-object" style="width:60px"> -->
+        </div>
+        <div class="media-body">
+          <h3 class="media-heading">{{customer.name}}</h3>
+            <p>{{customer.mobile_no}}
+             ,{{customer.address}}</p>
+             <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Edit Profile</a></p>
+         
+        </div><hr>
+      </div>

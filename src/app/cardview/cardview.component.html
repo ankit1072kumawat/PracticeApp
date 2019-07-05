@@ -1,0 +1,28 @@
+
+  <div class="card card-default">
+      <div class="card-header"></div>
+      <div class="card-body card-5-7">
+        <div class="card-left">
+            
+          <!-- <img src="https://fillmurray.com/g/320/320" > -->
+        </div>
+        <div class="card-right">
+          
+          
+        </div>
+      </div>
+    </div>
+
+  <div class="row" *ngFor="let customer of customers">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img [src]='customer.url' />
+          <div class="caption">
+            <h3>{{customer.name}}</h3>
+            <p>{{customer.mobile_no}}</p>
+            <p>{{customer.address}}</p>
+            <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Edit Profile</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
