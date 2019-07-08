@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { CustomerService } from './customer.service';
 import { FilteredPipe } from './filtered.pipe';
 import { HighlightDirective } from './highlight.directive'
+import { HttpClientModule } from '@angular/common/http';
  
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HighlightDirective } from './highlight.directive'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule      
+    ReactiveFormsModule,
+    HttpClientModule    
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

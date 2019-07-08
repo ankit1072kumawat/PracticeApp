@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -7,9 +7,14 @@ import { HttpClient } from 'selenium-webdriver/http';
 })
 export class CustomerhttpService {
 
-  constructor(private htt : HttpClient) { }
-storeCustomers(customers: any[]) {
-  // this.httpclient.post('https://mypractice-ed296.firebaseio.com/', customers)
+  
+  constructor(private http : HttpClient) { }
 
+  getdata(){
+    return this.http.get('https://mypractice-ed296.firebaseio.com/data.json')
+  }
+storeCustomers(customers) {
+  return this.http.post('https://mypractice-ed296.firebaseio.com/data.json',customers)
 }
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { CustomerService } from '../customer.service';
+import { CustomerhttpService } from '../customerhttp.service';
 
 @Component({
   selector: 'app-cardview',
@@ -8,13 +8,35 @@ import { CustomerService } from '../customer.service';
 })
 export class CardviewComponent implements OnInit {
 
- customers =[];
- filteredStatus = '';
+  Object = Object;
+  customersView ;
+  abc;
+  filteredStatus = '';
 
-  constructor(private firstService : CustomerService) { }
+  constructor(private fifthService: CustomerhttpService) { }
 
   ngOnInit() {
-    this.customers = this.firstService.getData();
+
+    this.fifthService.getdata()
+      .subscribe(
+        (response) => {
+          this.customersView=response;
+          console.log(this.customersView);
+        }, (error) => console.log(error)
+      );
+    // let arr = [];
+    // for(let key in this.customersView){
+    //  if(this.customersView.hasOwnProperty(key)){
+    //    arr.push(this.customersView[key]);
+    //  }
+    // }
+    // console.log("asdasdsadsd",arr);
+    
+
+  }
+  getView() {
+
+
   }
 
 }

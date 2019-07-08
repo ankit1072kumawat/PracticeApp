@@ -4,17 +4,19 @@
 </div>
 <hr>
 
-  <div class="row" *ngFor="let customer of customers | filtered : filteredStatus : 'name'">
+  <div class="row" *ngFor="let customer of customersView | keyvalue |filtered : filteredStatus : 'name'">
+    <div *ngFor="let data of customer | keyvalue">
       <div class="col-sm-6 col-md-4" >   
         <div class="thumbnail"  appHighlight>
-            <img [src]='customer.url' />
+            <img [src]='data.value.url' />
           <div class="caption">
-              <h3>{{customer.id}}</h3>
-            <h3>{{customer.name}}</h3>
-            <p>{{customer.mobile_no}}</p>
-            <p>{{customer.address}}</p>
+              <h3>{{data.value.name}}</h3>
+            <h3>{{data.value.mobile}}</h3>
+            <p>{{data.value.email}}</p>
+            <p>{{data.value.address}} </p>
             <p><a [routerLink]="['/customers',customer.id]" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Edit Profile</a></p>
           </div>
         </div>
       </div>
+    </div>
     </div>
