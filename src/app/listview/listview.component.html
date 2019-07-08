@@ -3,12 +3,12 @@
     <input type="text" [(ngModel)] ="filteredStatus">
     <!-- <button type="btn btn-primary" >Search</button> -->
   </div>
-<div class="media" *ngFor="let customer of customers | filtered : filteredStatus : 'name'">
+<div class="media" *ngFor="let customer of customers | filtered : filteredStatus : 'name'" appHighlight>
         <div class="media-left">
                 <img [src]='customer.url'  class="media-object" style="width:80px"/>
           <!-- <img src="img_avatar1.png" class="media-object" style="width:60px"> -->
         </div>
-        <div class="media-body">
+        <div class="media-body" >
           <h3 class="media-heading">{{customer.name}}</h3>
             <p>{{customer.mobile_no}}
              ,{{customer.address}}</p>

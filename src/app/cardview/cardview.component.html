@@ -5,8 +5,8 @@
 <hr>
 
   <div class="row" *ngFor="let customer of customers | filtered : filteredStatus : 'name'">
-      <div class="col-sm-6 col-md-4">   
-        <div class="thumbnail">
+      <div class="col-sm-6 col-md-4" >   
+        <div class="thumbnail"  appHighlight>
             <img [src]='customer.url' />
           <div class="caption">
               <h3>{{customer.id}}</h3>

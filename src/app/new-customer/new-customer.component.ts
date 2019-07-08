@@ -12,10 +12,10 @@ export class NewCustomerComponent implements OnInit {
  newCustomerForm : FormGroup;
   ngOnInit() {
     this.newCustomerForm = new FormGroup({
-      'name' : new FormControl('Ankit'),
-      'mobile' : new FormControl('9876543210'),
-      'email' : new FormControl('ankit@abc.com'),
-      'address' : new FormControl('mansarovar plaza'),
+      'name' : new FormControl(null),
+      'mobile' : new FormControl(null),
+      'email' : new FormControl(null),
+      'address' : new FormControl(null),
       'file' : new FormControl(null),
 
     })

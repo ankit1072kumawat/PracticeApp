@@ -13,7 +13,8 @@ import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { CustomerService } from './customer.service';
-import { FilteredPipe } from './filtered.pipe'
+import { FilteredPipe } from './filtered.pipe';
+import { HighlightDirective } from './highlight.directive'
  
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilteredPipe } from './filtered.pipe'
     NewCustomerComponent,
     AboutComponent,
     LoginComponent,
-    FilteredPipe
+    FilteredPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
