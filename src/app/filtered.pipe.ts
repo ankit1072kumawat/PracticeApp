@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilteredPipe implements PipeTransform {
 
   transform(value: any, filteredStatus: string, name: string): any {
-    if (value.len == 0 || filteredStatus === '') {
+    if ( typeof value == 'undefined' || filteredStatus == '') {
       console.log("asdasdads",value)
       // console.log("asdasdads",filteredStatus)
       return value;

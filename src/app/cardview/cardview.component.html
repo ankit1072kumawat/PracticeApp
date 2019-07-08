@@ -4,19 +4,28 @@
 </div>
 <hr>
 
-  <div class="row" *ngFor="let customer of customersView | keyvalue |filtered : filteredStatus : 'name'">
-    <div *ngFor="let data of customer | keyvalue">
-      <div class="col-sm-6 col-md-4" >   
-        <div class="thumbnail"  appHighlight>
-            <img [src]='data.value.url' />
+  <!-- <div class="row" *ngFor="let customer of customersView | keyvalue |filtered : filteredStatus : 'name'"> -->
+      <div class="row" *ngFor="let customer of customersView | keyvalue;let i = index ">   
+          {{i}}
+      <div class="col-sm-6 col-md-4"  *ngFor="let data of customer | keyvalue">   
+        <!-- <div class="thumbnail">
+            <img [src]="data.value.file" />
           <div class="caption">
-              <h3>{{data.value.name}}</h3>
+            <h3>{{i}}</h3>
+            <h3>{{data.value.name}}</h3>
             <h3>{{data.value.mobile}}</h3>
             <p>{{data.value.email}}</p>
             <p>{{data.value.address}} </p>
             <p><a [routerLink]="['/customers',customer.id]" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Edit Profile</a></p>
           </div>
-        </div>
+        </div> -->
+<div><h3>{{data.value.name}}</h3></div>
+<div><h3><img src="{{data.value.url}}"></h3></div>
+  <div><span>{{data.value.email}}</span></div>
+  <div><span>{{data.value.mobile}}</span></div>
+  <div><span>{{data.value.address}}</span></div>
+        
       </div>
     </div>
-    </div>
+
+  

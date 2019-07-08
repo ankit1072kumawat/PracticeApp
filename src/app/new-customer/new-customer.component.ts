@@ -12,7 +12,7 @@ import { empty } from 'rxjs';
 })
 export class NewCustomerComponent implements OnInit {
 
-  
+  selectedFile = null;
 
   constructor(private forthService : CustomerService, private httpService : CustomerhttpService) { }
  newCustomerForm : FormGroup;
@@ -29,6 +29,16 @@ export class NewCustomerComponent implements OnInit {
     })
 
   }
+  onfileUpload(event)
+  {
+    this.selectedFile = event.target.files[0];
+  }
+  uploaded()
+  {
+    const fd = new FormData();
+    fd.append('image',this.selectedFile,this.selectedFile.name);
+    this.httpService.storeCustomers(fd)
+  }
   onSubmit() {
     // console.log(this.newCustomerForm)
     let customers ={
@@ -39,11 +49,11 @@ export class NewCustomerComponent implements OnInit {
     file : this.newCustomerForm.value.file
     };
     console.log(customers)
-    this.httpService.storeCustomers(customers)
-    .subscribe(
-      (Response) => console.log(Response),
-      (error) => console.log(error)
-      );
+    // this.httpService.storeCustomers(customers)
+    // .subscribe(
+    //   (Response) => console.log(Response),
+    //   (error) => console.log(error)
+    //   );
     
     // console.log(customers)
   }
