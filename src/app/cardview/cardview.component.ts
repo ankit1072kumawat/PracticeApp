@@ -21,7 +21,7 @@ export class CardviewComponent implements OnInit {
       .subscribe(
         (response) => {
           this.customersView=response;
-          console.log(this.customersView);
+          console.log("aaaaaaaaaaaaaaaaaaa>>>>>>>>>",this.customersView);
         }, (error) => console.log(error)
       );
     // let arr = [];
@@ -33,10 +33,6 @@ export class CardviewComponent implements OnInit {
     // console.log("asdasdsadsd",arr);
     
 
-  }
-  getView() {
-
-
-  }
-
+  
+      }
 }

@@ -16,7 +16,11 @@ import { CustomerService } from './customer.service';
 import { FilteredPipe } from './filtered.pipe';
 import { HighlightDirective } from './highlight.directive'
 import { HttpClientModule } from '@angular/common/http';
- 
+import { CustomerhttpService } from './customerhttp.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,16 +32,19 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     LoginComponent,
     FilteredPipe,
-    HighlightDirective
+    HighlightDirective,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule    
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseconfig),
+    AngularFireStorageModule,  
   ],
-  providers: [CustomerService],
+  providers: [CustomerService,CustomerhttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

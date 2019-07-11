@@ -1,18 +1,28 @@
-.container-fluid{
+/* .container-fluid{
   background-color: #3287ff;
-}
-.navbar-inverse .navbar-nav>.active>a{
+} */
+/* .navbar-inverse .navbar-nav>.active>a{
   color: #3f403f;
   background-color: #ffffff;
     padding-top: 0px;
     margin-top: 13px;
+} */
+.nav-pills[_ngcontent-tgi-c0] > li[_ngcontent-tgi-c0] > a[_ngcontent-tgi-c0] {
+  padding-left: 162px;
+  margin-left: -216px;
+}
+.nav-justified {
+  width: 62%;
+}
+.nav-pills[_ngcontent-klx-c0] > li[_ngcontent-klx-c0] > a[_ngcontent-klx-c0] {
+  padding-left: 10px;
 }
 
 .icon {
   margin-left: 45px;
 }
 .glyphicon {
-  margin-bottom: 36px;
+  margin-bottom: 3px;
  }
  .nav-pills>li.active>a,.nav-pills>li.active>a:hover{
   padding-left: 32px;
@@ -22,10 +32,16 @@
  
  }
  .nav-pills>li>a{
-  padding-left: 82px;
+  padding-left: 10px;
+  width:   74%;
   
  }
-  
+ .container {
+  padding-right: 15px;
+  padding-left: -2px;
+  margin-right: 601px;
+  margin-left: auto;
+}
 
 
 card{ background-color: #fff; border: 1px solid transparent; border-radius: 6px; }

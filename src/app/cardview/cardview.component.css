@@ -1,5 +1,18 @@
+.form-control {
+    width: 121%
+}
 
- 
+.container {
+    width: 1434px;
+}
+.form-group {
+    margin-bottom: 15px;
+    float: right;
+}
+a {
+    color: #2c343a;
+    text-decoration: none;
+}
 .row {
     width : 50%;
     display : inline-block;

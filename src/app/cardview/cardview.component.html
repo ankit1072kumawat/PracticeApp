@@ -1,31 +1,25 @@
-<div class="filter">
-  <input type="text" [(ngModel)] ="filteredStatus">
-  <!-- <button type="btn btn-primary" >Search</button> -->
+<div class="container">
+  <div class="form-group">
+    <input type="text" class="form-control" id="usr" [(ngModel)]="filteredStatus">
+  </div>
 </div>
 <hr>
-
-  <!-- <div class="row" *ngFor="let customer of customersView | keyvalue |filtered : filteredStatus : 'name'"> -->
-      <div class="row" *ngFor="let customer of customersView | keyvalue;let i = index ">   
-          {{i}}
-      <div class="col-sm-6 col-md-4"  *ngFor="let data of customer | keyvalue">   
-        <!-- <div class="thumbnail">
-            <img [src]="data.value.file" />
-          <div class="caption">
-            <h3>{{i}}</h3>
-            <h3>{{data.value.name}}</h3>
-            <h3>{{data.value.mobile}}</h3>
-            <p>{{data.value.email}}</p>
-            <p>{{data.value.address}} </p>
-            <p><a [routerLink]="['/customers',customer.id]" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Edit Profile</a></p>
-          </div>
-        </div> -->
-<div><h3>{{data.value.name}}</h3></div>
-<div><h3><img src="{{data.value.url}}"></h3></div>
-  <div><span>{{data.value.email}}</span></div>
-  <div><span>{{data.value.mobile}}</span></div>
-  <div><span>{{data.value.address}}</span></div>
-        
-      </div>
+<div class="container">
+<div class="row" *ngFor="let customer of customersView | keyvalue;let i = index ">
+  <!-- <div><span>{{customer.value.name}}</span></div>
+    <div><span>{{customer.value.mobile}}</span></div>  
+  <div><span>{{customer.value.email}}</span></div>
+    <div><span>{{customer.value.file  }}</span></div>
+    <div><span>{{customer.value.address}}</span></div> -->
+  <div class="card" style="width: 29rem; border: 2px solid #888;height: 212px; padding-left: 29px;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{customer.value.name}}</h5>
+      <h5 class="card-title">{{customer.value.email}}</h5>
+      <h5 class="card-title">{{customer.value.mobile}}</h5>
+      <p class="card-text">{{customer.value.address}}</p>
+      <a href="#" class="btn btn-primary">View Profile</a>
     </div>
-
-  
+  </div>
+</div>
+</div>
