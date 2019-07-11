@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { UploadService } from '../new-customer/upload.service';
-
+import * as firebase from 'firebase';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +13,7 @@ import { UploadService } from '../new-customer/upload.service';
 })
 export class LoginComponent implements OnInit {
 fileChange;
+downloadURL: Observable<string>;
   constructor(private upload : UploadService,private storage: AngularFireStorage) {}
 
   
@@ -21,42 +25,8 @@ fileChange;
   color: string = 'primary';
   mode: 'determinate';
   progressBarValue;
-
-  // constructor(private storage: AngularFireStorage) {
-
-  // }
-
-  // chooseFiles(event) {
-  //   this.selectedFiles = event.target.files;
-  //   if (this.selectedFiles.item(0))
-  //     this.uploadpic();  
-  // }
-
-  // uploadpic() {
-  //   let file = this.selectedFiles.item(0);
-  //   let uniqkey = 'pic' + Math.floor(Math.random() * 1000000);
-  //   const uploadTask = this.storage.upload('/angfire2store/' + uniqkey, file);
-
-  //   // this.imgsrc = uploadTask.downloadURL();
-
-  //   uploadTask.percentageChanges().subscribe((value) => {
-  //     this.progressBarValue = value.toFixed(2);
-  //   })
-  // }
-  // uploadImage() {
-  //   this.upload.chooseFiles(Event) 
-  //   let files ={
-  //     file : this.fileChange
-  //   };
-  
-
-  // }
-  // chooseFiles(event){
-  //   console.log(event.target.files[0]);
-  // this.fileChange = event.target.files[0];
-  // this.uploadImage();
-  
-  // }
+  public storageRef : Storage;
+  public uploadProgress = 0;
 
   chooseFiles(event)
   {
@@ -67,12 +37,40 @@ fileChange;
   }
 
   uploadImage() {
+    
     let file = this.fileChange.item(0);
     let uniqkey = 'pic'+ Math.floor(Math.random()*1000)
-    const uploadTask = this.storage.upload('angularfire2store'+ uniqkey,file);
+    const ref = this.storage.ref('/angularfire2store/'+uniqkey);
+    const uploadTask = this.storage.upload('/angularfire2store/'+ uniqkey,file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+       ref.getDownloadURL().subscribe(url => {
+         console.log(url); // <-- do what ever you want with the url..
+       });
+     }))
+     .subscribe(); 
     
-    // this.imgsrc = uploadTask.downloadURL();
+  //   const fileRef = this.storage.ref('angularfire2store');
+  //   uploadTask.snapshotChanges().pipe(
+  //     finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+      
+  //  )
+  // .subscribe((Response) => {
+  //   return console.log(Response);
+    
+  // },
+  // (error) => console.log(error))
+  
+  //   // this.imgsrc = uploadTask.downloadURL();
+    
+  //   // uploadTask.on('state_changed', function(snapshot){
+  //   //   self.percentage = (snapshot.bytesTransferred / snapshot.totalBytes) *100;
+  //   // })
+  //   console.log("111111111111111111111111");
+ 
   }
+  
   ngOnInit() {
 
   }

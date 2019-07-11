@@ -2,44 +2,45 @@
     <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
         <input type="email" class="form-control" id="name" formControlName="name">
-        <span 
-        *ngIf ="!newCustomerForm.get('name').valid && newCustomerForm.get('name').touched"
-        class="help-block">Please Enter a valid Name</span>
+        <span *ngIf="!newCustomerForm.get('name').valid && newCustomerForm.get('name').touched"
+            class="help-block">Please Enter a valid Name</span>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Mobile no</label>
         <input type="email" class="form-control" id="mobile" formControlName="mobile">
-        <span 
-        *ngIf ="!newCustomerForm.get('mobile').valid && newCustomerForm.get('mobile').touched"
-        class="help-block">Please Enter a valid Mobile Number</span>
+        <span *ngIf="!newCustomerForm.get('mobile').valid && newCustomerForm.get('mobile').touched"
+            class="help-block">Please Enter a valid Mobile Number</span>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Email</label>
-        <input type="email" class="form-control" id="email" formControlName="email">
-        <span 
-        *ngIf ="!newCustomerForm.get('email').valid && newCustomerForm.get('email').touched"
-        class="help-block">Please Enter a valid Email</span>
+        <input type="email" class="form-control" id="email" formControlName="email" >
+        <span *ngIf="!newCustomerForm.get('email').valid && newCustomerForm.get('email').touched"
+            class="help-block">Please Enter a valid Email</span>
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Address</label>
         <textarea class="form-control" id="address" rows="3" formControlName="address"></textarea>
     </div>
+    <!-- Image input -->
     <div class="form-group">
         <label for="exampleFormControlFile1">File</label>
-        <input type="file" class="form-control-file" id="file" formControlName="file"  (change)="chooseFiles($event)">
+        <input type="file" class="form-control-file" id="file" formControlName="file" (change)="chooseFiles($event)">
         <!-- <button type="btn btn-default">Upload</button> -->
-        <span 
-        *ngIf ="!newCustomerForm.get('file').valid && newCustomerForm.get('file').touched"
-        class="help-block">Please Upload a valid file</span>
+        <span *ngIf="!newCustomerForm.get('file').valid && newCustomerForm.get('file').touched"
+            class="help-block">Please Upload a valid file</span>
+            <br>
         <div class="container">
-            <h2>Uploading...</h2>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                <span class="sr-only">70% Complete</span>
-              </div>
+            
+            <div class="progress" >
+                <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"
+                    [style.width]="progressbarValue +'%'">
+                    {{progressbarValue}}%
+                </div>
             </div>
-          </div>
+
+        </div>
+
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!newCustomerForm.valid">Submit</button>
 </form>

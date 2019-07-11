@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { ActivatedRoute } from "@angular/router";
+import { CustomerhttpService } from '../customerhttp.service';
 import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-customers',
@@ -12,10 +13,21 @@ export class CustomersComponent implements OnInit {
   customers = [];
   newCustomer = [];
   id;
-  constructor(private thirdService: CustomerService, private route: ActivatedRoute) { }
+  Object = Object;
+  customersView;
+  abc;
+  filteredStatus = '';
+
+  constructor(private fifthService: CustomerhttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.customers = this.thirdService.getData();
+    this.fifthService.getdata()
+      .subscribe(
+        (response) => {
+          this.customersView = response;
+        }, (error) => console.log(error)
+      );
+
     this.id = this.route.snapshot.params.id;
 
     // this.route.params.subscribe(params => {

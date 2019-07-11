@@ -5,21 +5,24 @@
 </div>
 <hr>
 <div class="container">
-<div class="row" *ngFor="let customer of customersView | keyvalue;let i = index ">
-  <!-- <div><span>{{customer.value.name}}</span></div>
-    <div><span>{{customer.value.mobile}}</span></div>  
-  <div><span>{{customer.value.email}}</span></div>
-    <div><span>{{customer.value.file  }}</span></div>
-    <div><span>{{customer.value.address}}</span></div> -->
-  <div class="card" style="width: 29rem; border: 2px solid #888;height: 212px; padding-left: 29px;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{customer.value.name}}</h5>
-      <h5 class="card-title">{{customer.value.email}}</h5>
-      <h5 class="card-title">{{customer.value.mobile}}</h5>
-      <p class="card-text">{{customer.value.address}}</p>
-      <a href="#" class="btn btn-primary">View Profile</a>
-    </div>
-  </div>
+<div class="row" *ngFor="let customer of customersView  | keyvalue | filtered : filteredStatus : 'name'"  >
+    <div class="card card-default">
+        <div class="card-body card-7-5">
+          <div class="card-left">
+            <img [src]="customer.value.file" class="img-responsive">
+          </div>
+          <div class="card-right">
+            <h2>{{customer.value.name}}</h2>
+            <h4>{{customer.value.email}}</h4>
+            <h4>{{customer.value.mobile}}</h4>
+            
+            <a [routerLink]="['/customers',customer.name]" class="btn btn-primary">View Profile</a>
+          </div>
+        </div>
+      </div>
 </div>
 </div>
+
+
+
+    

@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { CustomerService } from '../customer.service';
+import { CustomerhttpService } from '../customerhttp.service';
 
 @Component({
   selector: 'app-listview',
@@ -8,12 +8,25 @@ import { CustomerService } from '../customer.service';
 })
 export class ListviewComponent implements OnInit {
 
-  customers = [];
- filteredStatus ='';
-  constructor(private SecondServices : CustomerService ) { }
+  Object = Object;
+  customersView;
+  abc;
+  filteredStatus = '';
+
+  constructor(private fifthService: CustomerhttpService) { }
 
   ngOnInit() {
-    this.customers = this.SecondServices.getData();
+
+    this.fifthService.getdata()
+      .subscribe(
+        (response) => {
+          this.customersView = response;
+        }, (error) => console.log(error)
+      );
+
+
+
+
   }
 
 }

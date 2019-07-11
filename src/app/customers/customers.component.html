@@ -1,14 +1,20 @@
-<div class="card-deck" *ngFor="let customer of newCustomer" >
+<div class="container">
+    <div class="form-group">
+      <input type="text" class="form-control" id="usr" [(ngModel)]="filteredStatus">
+    </div>
+  </div>
+  <hr>  
+<div class="card-deck" *ngFor="let customer of customersView  | keyvalue | filtered : filteredStatus : 'name'" >
   <div class="col-md-7 col-sm-7">
   <div class="card">
-    <img class="card-img-top"  [src]='customer.url' width=30% />
+    <img class="card-img-top"  [src]="customer.value.file" width=30% />
   </div>
   <div class="col-md-5 col-sm-5">
     <div class="card-body">
-      <h4 class="card-title">{{customer.name}}</h4>
-      <p class="card-text">{{customer.id}}</p>
-      <p class="card-text">{{customer.mobile_no}}</p>
-      <p class="card-text">{{customer.viewOrders}}</p>
+      <h4 class="card-title">{{customer.value.name}}</h4>
+      <p class="card-text">{{customer.value.email}}</p>
+      <p class="card-text">{{customer.value.mobile}}</p>
+      <p class="card-text">{{customer.value.address}}</p>
       <p class="card-text"><small class="text-muted">{{customer.address}}</small></p>
     </div>
   </div>

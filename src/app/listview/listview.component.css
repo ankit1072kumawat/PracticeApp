@@ -11,4 +11,5 @@
 .media, .media-body {
     overflow: visible;
     zoom: 1;
+    padding-left: 65px;
 }

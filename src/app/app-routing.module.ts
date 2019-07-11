@@ -15,7 +15,7 @@ const routes: Routes = [
   { path : 'mapview', component : MapviewComponent},
   { path : 'new-customer', component : NewCustomerComponent},
   { path : 'about', component : AboutComponent},
-  { path : 'customers/:id', component : CustomersComponent },
+  { path : 'customers/:name', component : CustomersComponent },
   { path : 'login', component : LoginComponent}
 
 ];

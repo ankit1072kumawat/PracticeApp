@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
-
+import {ProgressBarModule} from "angular-progress-bar"
 import { CardviewComponent } from './cardview/cardview.component';
 import { ListviewComponent } from './listview/listview.component';
 import { MapviewComponent } from './mapview/mapview.component';
@@ -42,7 +42,8 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
-    AngularFireStorageModule,  
+    AngularFireStorageModule,
+    ProgressBarModule  
   ],
   providers: [CustomerService,CustomerhttpService],
   bootstrap: [AppComponent]

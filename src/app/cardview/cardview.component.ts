@@ -9,7 +9,7 @@ import { CustomerhttpService } from '../customerhttp.service';
 export class CardviewComponent implements OnInit {
 
   Object = Object;
-  customersView ;
+  customersView;
   abc;
   filteredStatus = '';
 
@@ -20,19 +20,12 @@ export class CardviewComponent implements OnInit {
     this.fifthService.getdata()
       .subscribe(
         (response) => {
-          this.customersView=response;
-          console.log("aaaaaaaaaaaaaaaaaaa>>>>>>>>>",this.customersView);
+          this.customersView = response;
         }, (error) => console.log(error)
       );
-    // let arr = [];
-    // for(let key in this.customersView){
-    //  if(this.customersView.hasOwnProperty(key)){
-    //    arr.push(this.customersView[key]);
-    //  }
-    // }
-    // console.log("asdasdsadsd",arr);
-    
 
-  
-      }
+
+
+
+  }
 }
