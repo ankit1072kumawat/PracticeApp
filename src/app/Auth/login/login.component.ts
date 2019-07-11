@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
-import { UploadService } from '../new-customer/upload.service';
+import { UploadService } from '../../new-customer/upload.service';
 import * as firebase from 'firebase';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';

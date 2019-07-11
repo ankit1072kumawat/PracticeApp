@@ -11,7 +11,7 @@ import { ListviewComponent } from './listview/listview.component';
 import { MapviewComponent } from './mapview/mapview.component';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Auth/login/login.component';
 import { CustomerService } from './customer.service';
 import { FilteredPipe } from './filtered.pipe';
 import { HighlightDirective } from './highlight.directive'
@@ -20,6 +20,8 @@ import { CustomerhttpService } from './customerhttp.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
+import { SignupComponent } from './Auth/signup/signup.component';
+import { AuthService } from './Auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { environment } from '../environments/environment';
     LoginComponent,
     FilteredPipe,
     HighlightDirective,
+    SignupComponent,
     
   ],
   imports: [
@@ -45,7 +48,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     ProgressBarModule  
   ],
-  providers: [CustomerService,CustomerhttpService],
+  providers: [CustomerService,CustomerhttpService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

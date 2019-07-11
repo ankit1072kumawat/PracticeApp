@@ -5,8 +5,9 @@ import { ListviewComponent } from './listview/listview.component';
 import { MapviewComponent } from './mapview/mapview.component';
 import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { AboutComponent } from './about/about.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Auth/login/login.component';
 import { CustomersComponent } from './customers/customers.component';
+import { SignupComponent } from './Auth/signup/signup.component';
 
 const routes: Routes = [
   { path : '', redirectTo : '/cardview', pathMatch : 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path : 'new-customer', component : NewCustomerComponent},
   { path : 'about', component : AboutComponent},
   { path : 'customers/:name', component : CustomersComponent },
-  { path : 'login', component : LoginComponent}
+  { path : 'login', component : LoginComponent},
+  { path : 'signup', component : SignupComponent}
 
 ];
 
