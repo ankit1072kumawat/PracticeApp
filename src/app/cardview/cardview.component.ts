@@ -12,6 +12,7 @@ export class CardviewComponent implements OnInit {
   customersView;
   abc;
   filteredStatus = '';
+  searchText='';
 
   constructor(private fifthService: CustomerhttpService) { }
 
@@ -21,6 +22,7 @@ export class CardviewComponent implements OnInit {
       .subscribe(
         (response) => {
           this.customersView = response;
+          console.log(this.customersView)
         }, (error) => console.log(error)
       );
 

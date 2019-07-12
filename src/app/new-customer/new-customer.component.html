@@ -42,5 +42,5 @@
         </div>
 
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!newCustomerForm.valid">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!newCustomerForm.valid || progressbarValue!=100 ">Submit</button>
 </form>

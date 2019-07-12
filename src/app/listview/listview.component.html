@@ -1,9 +1,8 @@
 
 <div class="filter">
-    <input type="text" [(ngModel)] ="filteredStatus">
-    <!-- <button type="btn btn-primary" >Search</button> -->
+  <input [(ngModel)]="searchText">
   </div>
-<div class="media" *ngFor="let customer of customersView  | keyvalue | filtered : filteredStatus : 'name'">
+<div class="media" *ngFor="let customer of customersView  | keyvalue | filtered : searchText">
         <div class="media-left">
                 <img [src]="customer.value.file"  class="media-object" style="width:177px"/>
           <!-- <img src="img_avatar1.png" class="media-object" style="width:60px"> -->

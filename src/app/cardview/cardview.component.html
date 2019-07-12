@@ -1,11 +1,11 @@
 <div class="container">
   <div class="form-group">
-    <input type="text" class="form-control" id="usr" [(ngModel)]="filteredStatus">
+    <input [(ngModel)]="searchText" >
   </div>
 </div>
 <hr>
 <div class="container">
-<div class="row" *ngFor="let customer of customersView  | keyvalue | filtered : filteredStatus : 'name'"  >
+<div class="row" *ngFor="let customer of customersView  | keyvalue | filtered : searchText"  >
     <div class="card card-default">
         <div class="card-body card-7-5">
           <div class="card-left">
@@ -16,7 +16,8 @@
             <h4>{{customer.value.email}}</h4>
             <h4>{{customer.value.mobile}}</h4>
             
-            <a [routerLink]="['/customers',customer.name]" class="btn btn-primary">View Profile</a>
+            <a [routerLink]="['/customers',customer.id]" class="btn btn-primary">View Profile</a>
+            <a [routerLink]="['/edit']" class="btn btn-primary">Edit Profile</a>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, EmailValidator,FormBuilder} from '@angular/forms';
-import { CustomerService } from '../customer.service';
 import { CustomerhttpService } from '../customerhttp.service';
 import { UploadService } from './upload.service';
 import { AngularFireStorage } from 'angularfire2/storage';
@@ -86,10 +85,6 @@ export class NewCustomerComponent implements OnInit {
     
     
   }
-  getUrl() 
-{
-  this.uploadImage
-}
 
   // console.log(customers)
 }

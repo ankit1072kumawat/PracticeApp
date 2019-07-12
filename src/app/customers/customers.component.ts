@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CustomerService } from '../customer.service';
 import { ActivatedRoute } from "@angular/router";
 import { CustomerhttpService } from '../customerhttp.service';
-import { AppComponent } from '../app.component';
+
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
@@ -10,11 +9,11 @@ import { AppComponent } from '../app.component';
 })
 export class CustomersComponent implements OnInit {
 
-  customers = [];
+  customers 
   newCustomer = [];
   id;
   Object = Object;
-  customersView;
+  customersView
   abc;
   filteredStatus = '';
 
@@ -25,24 +24,55 @@ export class CustomersComponent implements OnInit {
       .subscribe(
         (response) => {
           this.customersView = response;
+          this.customers = this.customersView
         }, (error) => console.log(error)
-      );
+      
+        );
+  
+this.customers=this.fifthService.getdata()
+.subscribe(
+  (Response)=> {
+    console.log("ahg",Response)
+    console.log(this.route.params);
+      
+    })
+  }
+}
 
-    this.id = this.route.snapshot.params.id;
 
-    // this.route.params.subscribe(params => {
-    for (let i = 0; i < this.customers.length; i++) {
-      if (this.customers[i].id == parseInt(this.id)) {
-        this.newCustomer.push(this.customers[i]);
-      }
-    }
-    // })
-    console.log(this.newCustomer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // this.id = this.route.snapshot.params.id;
+    // for (let i = 0; i < this.customers.length; i++) {
+    //   if (this.customers[i].id == parseInt(this.id)) {
+    //     this.newCustomer.push(this.customers[i]);
+    //   }
+    // }
+
     // this.id = this.route.snapshot.params.id;
     // console.log(this.id);
     // this.customer = this.filterData();
     // console.log(this.customer);
-  }
+
+
+    // this.route.params.subscribe(params => {
+    //   this.customers.forEach((p: CustomerhttpService) => {
+    //     // if(p.getdata('id': Number))
+    //   })
+    // })
 
   // filterData() {
   //   this.customers.forEach(element => {
@@ -53,4 +83,4 @@ export class CustomersComponent implements OnInit {
   //   });
   // }
 
-}
+

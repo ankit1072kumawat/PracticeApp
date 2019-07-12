@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class CustomerhttpService {
 
   selectedFile: File = null;
+  customers ;
 
   constructor( private http: HttpClient) { }
   onfileUpload(event) {
@@ -26,5 +27,14 @@ export class CustomerhttpService {
   }
   storeCustomers(customers) {
     return this.http.post('https://mypractice-ed296.firebaseio.com/data.json', customers)
+  }
+
+  editCustomers(customers){
+    return this.http.put('https://mypractice-ed296.firebaseio.com/data.json',customers)
+  }
+  particularData(customers) {
+    this.customers= this.getdata();
+    console.log(this.customers)
+
   }
 }

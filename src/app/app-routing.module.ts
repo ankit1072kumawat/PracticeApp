@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { CustomersComponent } from './customers/customers.component';
 import { SignupComponent } from './Auth/signup/signup.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 const routes: Routes = [
   { path : '', redirectTo : '/cardview', pathMatch : 'full'},
@@ -16,9 +17,10 @@ const routes: Routes = [
   { path : 'mapview', component : MapviewComponent},
   { path : 'new-customer', component : NewCustomerComponent},
   { path : 'about', component : AboutComponent},
-  { path : 'customers/:name', component : CustomersComponent },
+  { path : 'customers/:id', component : CustomersComponent },
   { path : 'login', component : LoginComponent},
-  { path : 'signup', component : SignupComponent}
+  { path : 'signup', component : SignupComponent},
+  { path : 'edit', component : EditCustomerComponent}
 
 ];
 

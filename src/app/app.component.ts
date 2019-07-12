@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { CustomerService } from './customer.service';
+
 import * as firebase from 'firebase';
 
 

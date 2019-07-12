@@ -12,6 +12,7 @@ export class ListviewComponent implements OnInit {
   customersView;
   abc;
   filteredStatus = '';
+  searchText=''
 
   constructor(private fifthService: CustomerhttpService) { }
 
