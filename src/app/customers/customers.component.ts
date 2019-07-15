@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { CustomerhttpService } from '../customerhttp.service';
 
 @Component({
@@ -9,33 +9,37 @@ import { CustomerhttpService } from '../customerhttp.service';
 })
 export class CustomersComponent implements OnInit {
 
-  customers 
+  customers =[]
   newCustomer = [];
   id;
   Object = Object;
-  customersView
+  customersView = {}
   abc;
   filteredStatus = '';
 
   constructor(private fifthService: CustomerhttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.fifthService.getdata()
-      .subscribe(
-        (response) => {
-          this.customersView = response;
-          this.customers = this.customersView
-        }, (error) => console.log(error)
-      
-        );
-  
-this.customers=this.fifthService.getdata()
-.subscribe(
-  (Response)=> {
-    console.log("ahg",Response)
-    console.log(this.route.params);
-      
+   
+  this.fetchData();
+  console.log("array",this.customersView);
+    this.route.params
+    .subscribe((params:Params)=>{
+      this.id = params['id'];
+      console.log(">>>>>>>>>", this.id);
     })
+
+  }
+  fetchData() {
+    this.fifthService.getdata()
+    .subscribe(
+      (response) => {
+        console.log(typeof(response))
+        console.log(response)
+        this.customersView= response;
+      }, (error) => console.log(error)
+    
+      );
   }
 }
 

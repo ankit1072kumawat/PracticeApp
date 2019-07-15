@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerhttpService } from '../customerhttp.service';
-import { FormGroup, FormControl, Validators, EmailValidator,FormBuilder} from '@angular/forms';
+import { FormGroup, FormControl, Validators, EmailValidator, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-customer',
@@ -9,22 +12,125 @@ import { FormGroup, FormControl, Validators, EmailValidator,FormBuilder} from '@
 })
 export class EditCustomerComponent implements OnInit {
 
-  editForm : FormGroup;
-  constructor(private editHttp : CustomerhttpService) { }
+
+  id;
+  url: string;
+  fileChange;
+  edit
+  progressbarValue;
+  editForm: FormGroup;
+  key;
+  currentObject;
+
+  constructor(private editHttp: CustomerhttpService, private route: ActivatedRoute, private storage: AngularFireStorage) { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe((params: Params) => {
+        this.id = params['id'];
+
+        console.log("Customer Id", this.id);
+        return;
+      })
+
+
     this.editForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
-      'mobile': new FormControl(null, [Validators.required, Validators.minLength(10)] ),
-      'email': new FormControl(null, [Validators.required,Validators.email]),
+      'mobile': new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'address': new FormControl(null, Validators.required),
-      'file': new FormControl('', Validators.required),
+      'file': new FormControl(null, Validators.required),
 
     })
+    // Fetch data from http services
+    this.editHttp.getdata()
+      .subscribe(
+        (Response) => {
+          console.log(Response);
+          this.edit = Response;
+          console.log("edit",this.edit)
+          console.log("edit+++", Object.keys(this.edit)[0])
+          // this.searchById();
+          this.searchbyKey();
+          // this.setFormValues();
+        }, (error) => console.log(error)
+      );
 
   }
-  onSubmit(){
-
+  onSubmit() {
+    // console.log(this.newCustomerForm)
+    let customers = {
+      name: this.editForm.value.name,
+      mobile: this.editForm.value.mobile,
+      email: this.editForm.value.email,
+      address: this.editForm.value.address,
+      file: this.url,
+      id: this.id
+    };
+    console.log(customers)
+    this.editHttp.editCustomers(customers)
+      .subscribe(
+        (Response) => console.log(Response),
+        (error) => console.log(error)
+      );
   }
+
+  chooseFiles(event) {
+    this.fileChange = event.target.files;
+    if (this.fileChange.item(0))
+      console.log("Uplaoded file", this.fileChange)
+    this.uploadImage();
+  }
+
+  uploadImage() {
+    let file = this.fileChange.item(0);
+    let uniqkey = 'pic' + Math.floor(Math.random() * 1000)
+    const ref = this.storage.ref('/angularfire2store/' + uniqkey);
+    const uploadTask = this.storage.upload('/angularfire2store/' + uniqkey, file);
+    uploadTask.percentageChanges().subscribe((value) => {
+      this.progressbarValue = value.toFixed(0);
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          ref.getDownloadURL().subscribe(url => {
+            this.url = url;
+            console.log(this.url); // <-- do what ever you want with the url..
+          });
+        }))
+        .subscribe();
+
+    })
+  }
+
+  setFormValues() {
+    // this.editForm = new FormGroup({
+    //   'name': new FormControl(this.currentObject.name, Validators.required),
+    //   'mobile': new FormControl(this.currentObject.mobile, [Validators.required, Validators.minLength(10)]),
+    //   'email': new FormControl(this.currentObject.email, [Validators.required, Validators.email]),
+    //   'address': new FormControl(this.currentObject.address, Validators.required),
+    //   'file': new FormControl(this.currentObject.url, Validators.required),
+
+    // })
+  }
+
+  // searchById() {
+  //   let key = Object.keys(this.edit);
+
+  //   for (let i = 0; i < Object.keys(this.edit).length; i++) {
+  //     if (this.id == this.edit[key[i]].id) {
+  //       this.currentObject = this.edit[key[i]]
+  //     }
+  //   }
+  //   console.log("Search BY Id:", this.currentObject);
+  // }
+   searchbyKey() {
+    for (let i = 0; i < Object.keys(this.edit).length; i++)
+    {
+      if(this.edit== Object.keys(this.edit)[0])
+      {
+        console.log("iokjm",this.edit )
+      }
+      // console.log("iokjm",this.edit)
+    }
+   }
 
 }

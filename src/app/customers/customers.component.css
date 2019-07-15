@@ -1,6 +1,7 @@
 .card-body{
   margin-left: 642px;
   margin-top: -256px;
+  width: 215px;
 }
 .card-deck{
   border: 1px solid #888; 
@@ -9,4 +10,13 @@
    padding: 5px; 
    height: 357px;
     width: 99%
+}
+.col-md-7 {
+  width: 95.333333%;
+}
+
+.card-img-top{
+  width : 30%;
+  height: 333px
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, EmailValidator,FormBuilder} from '@angular/forms';
+import { FormGroup, FormControl, Validators, EmailValidator, FormBuilder } from '@angular/forms';
 import { CustomerhttpService } from '../customerhttp.service';
 import { UploadService } from './upload.service';
 import { AngularFireStorage } from 'angularfire2/storage';
@@ -18,24 +18,24 @@ export class NewCustomerComponent implements OnInit {
 
   constructor(private upload: UploadService, private httpService: CustomerhttpService, private storage: AngularFireStorage) { }
   newCustomerForm: FormGroup;
-  id = Math.floor(Math.random()*1000);
+  id = Math.floor(Math.random() * 1000);
   fileChange;
   ariaValuenow;
   progressbarValue;
-  url : string;
+  url: string;
 
 
   ngOnInit() {
     // this.customers = this.forthService.getData();
     this.newCustomerForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
-      'mobile': new FormControl(null, [Validators.required, Validators.minLength(10)] ),
-      'email': new FormControl(null, [Validators.required,Validators.email]),
+      'mobile': new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'address': new FormControl(null, Validators.required),
       'file': new FormControl('', Validators.required),
 
     })
-  
+
 
   }
 
@@ -47,7 +47,7 @@ export class NewCustomerComponent implements OnInit {
       email: this.newCustomerForm.value.email,
       address: this.newCustomerForm.value.address,
       file: this.url,
-      id : this.id
+      id: this.id
     };
     console.log(customers)
     this.httpService.storeCustomers(customers)
@@ -57,46 +57,36 @@ export class NewCustomerComponent implements OnInit {
       );
   }
 
-  chooseFiles(event)
-  {
-    this.fileChange =event.target.files;
-    if(this.fileChange.item(0))
-    console.log("jshfgwuey",this.fileChange)
+  chooseFiles(event) {
+    this.fileChange = event.target.files;
+    if (this.fileChange.item(0))
+      console.log("file uploaded", this.fileChange)
     this.uploadImage();
   }
 
   uploadImage() {
     let file = this.fileChange.item(0);
-    let uniqkey = 'pic'+ Math.floor(Math.random()*1000)
-    const ref = this.storage.ref('/angularfire2store/'+uniqkey);
-    const uploadTask = this.storage.upload('/angularfire2store/'+ uniqkey,file);
-    uploadTask.percentageChanges().subscribe((value)=> {
+    let uniqkey = 'pic' + Math.floor(Math.random() * 1000)
+    const ref = this.storage.ref('/angularfire2store/' + uniqkey);
+    const uploadTask = this.storage.upload('/angularfire2store/' + uniqkey, file);
+    uploadTask.percentageChanges().subscribe((value) => {
       this.progressbarValue = value.toFixed(0);
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
-         ref.getDownloadURL().subscribe(url => {
-           this.url= url;
-           console.log(this.url); // <-- do what ever you want with the url..
-         });
-       }))
-       .subscribe(); 
+          ref.getDownloadURL().subscribe(url => {
+            this.url = url;
+            console.log(this.url); // <-- do what ever you want with the url..
+          });
+        }))
+        .subscribe();
 
     })
-    
-    
+
+
   }
 
-  // console.log(customers)
-}
-  // onfileUpload($event){
-  //   this.httpService.uploaded()
-  //   .subscribe(res =>{console.log("ashdgajdgdgg",res)});
-  // }
 
-  // sendData() {
-  //   this.httpService.storeCustomers(this.newCustomerForm)
-  //   .subscribe(
-  //     (response => console.log("Ankithsfhskj",response)))
-  // }
+}
+
 
 
