@@ -16,10 +16,12 @@ export class EditCustomerComponent implements OnInit {
   id;
   url: string;
   fileChange;
-  edit
+  allData;
+  editData
   progressbarValue;
   editForm: FormGroup;
   key;
+  sendObject;
   currentObject;
 
   constructor(private editHttp: CustomerhttpService, private route: ActivatedRoute, private storage: AngularFireStorage) { }
@@ -27,13 +29,10 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .subscribe((params: Params) => {
-        this.id = params['id'];
-
-        console.log("Customer Id", this.id);
+        this.id = params.key;
+        // console.log("key of customer", this.id)
         return;
       })
-
-
     this.editForm = new FormGroup({
       'name': new FormControl(null, Validators.required),
       'mobile': new FormControl(null, [Validators.required, Validators.minLength(10)]),
@@ -42,32 +41,42 @@ export class EditCustomerComponent implements OnInit {
       'file': new FormControl(null, Validators.required),
 
     })
+
+
     // Fetch data from http services
     this.editHttp.getdata()
       .subscribe(
         (Response) => {
-          console.log(Response);
-          this.edit = Response;
-          console.log("edit",this.edit)
-          console.log("edit+++", Object.keys(this.edit)[0])
-          // this.searchById();
-          this.searchbyKey();
-          // this.setFormValues();
+          this.allData = Response;
+          console.log("edit", this.allData)
+          // const keys =  Object.keys(this.edit)
+          // // for( const key of keys)
+          // console.log("keys",keys)
+          // // console.log("objects of edit", Object.keys(this.edit)[0])  
+
+          // this.searchbyKey();
+          this.editData = this.allData[this.id];
+          console.log(this.editData);
+          this.setFormValues();
         }, (error) => console.log(error)
       );
-
   }
+
   onSubmit() {
     // console.log(this.newCustomerForm)
+
     let customers = {
-      name: this.editForm.value.name,
-      mobile: this.editForm.value.mobile,
-      email: this.editForm.value.email,
-      address: this.editForm.value.address,
-      file: this.url,
-      id: this.id
+
+      [this.id]: {
+        name: this.editForm.value.name,
+        mobile: this.editForm.value.mobile,
+        email: this.editForm.value.email,
+        address: this.editForm.value.address,
+        file: this.url,
+      }
+      // id: this.id
     };
-    console.log(customers)
+    console.log("OnSubmit",customers)
     this.editHttp.editCustomers(customers)
       .subscribe(
         (Response) => console.log(Response),
@@ -102,35 +111,14 @@ export class EditCustomerComponent implements OnInit {
   }
 
   setFormValues() {
-    // this.editForm = new FormGroup({
-    //   'name': new FormControl(this.currentObject.name, Validators.required),
-    //   'mobile': new FormControl(this.currentObject.mobile, [Validators.required, Validators.minLength(10)]),
-    //   'email': new FormControl(this.currentObject.email, [Validators.required, Validators.email]),
-    //   'address': new FormControl(this.currentObject.address, Validators.required),
-    //   'file': new FormControl(this.currentObject.url, Validators.required),
+    this.editForm = new FormGroup({
+      'name': new FormControl(this.editData.name, Validators.required),
+      'mobile': new FormControl(this.editData.mobile, [Validators.required, Validators.minLength(10)]),
+      'email': new FormControl(this.editData.email, [Validators.required, Validators.email]),
+      'address': new FormControl(this.editData.address, Validators.required),
+      'file': new FormControl(this.editData.url, Validators.required),
 
-    // })
+    })
   }
-
-  // searchById() {
-  //   let key = Object.keys(this.edit);
-
-  //   for (let i = 0; i < Object.keys(this.edit).length; i++) {
-  //     if (this.id == this.edit[key[i]].id) {
-  //       this.currentObject = this.edit[key[i]]
-  //     }
-  //   }
-  //   console.log("Search BY Id:", this.currentObject);
-  // }
-   searchbyKey() {
-    for (let i = 0; i < Object.keys(this.edit).length; i++)
-    {
-      if(this.edit== Object.keys(this.edit)[0])
-      {
-        console.log("iokjm",this.edit )
-      }
-      // console.log("iokjm",this.edit)
-    }
-   }
 
 }

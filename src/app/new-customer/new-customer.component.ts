@@ -47,12 +47,12 @@ export class NewCustomerComponent implements OnInit {
       email: this.newCustomerForm.value.email,
       address: this.newCustomerForm.value.address,
       file: this.url,
-      id: this.id
+      // id: this.id
     };
     console.log(customers)
     this.httpService.storeCustomers(customers)
       .subscribe(
-        (Response) => console.log(Response),
+        (Response) => console.log("Response",Response),
         (error) => console.log(error)
       );
   }
