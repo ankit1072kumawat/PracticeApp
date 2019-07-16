@@ -1,3 +1,4 @@
+<div class="container">
 <form class="newForm" [formGroup]="newCustomerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
@@ -44,3 +45,4 @@
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!newCustomerForm.valid || progressbarValue!=100 ">Submit</button>
 </form>
+</div>

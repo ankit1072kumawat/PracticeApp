@@ -17,7 +17,7 @@
             <h4>{{customer.value.email}}</h4>
             <h4>{{customer.value.mobile}}</h4>
             <div class="btn">
-            <a [routerLink]="['/customers',customer.value.id]" class="btn btn-primary">View Profile</a>
+            <a (click)="viewProfile(customer)" class="btn btn-primary">View Profile</a>
             <button  (click)="editProfile(customer)" class="btn btn-primary">Edit Profile</button>
            </div>
           </div>

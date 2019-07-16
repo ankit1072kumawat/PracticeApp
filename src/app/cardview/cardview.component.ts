@@ -33,6 +33,11 @@ export class CardviewComponent implements OnInit {
     console.log(customer);
   }
 
+  viewProfile(customer) {
+    this.router.navigate(['customers',customer.key]);
+    console.log(customer);
+  }
+
   /*searchById() {
     let key = Object.keys(this.customersView);
 

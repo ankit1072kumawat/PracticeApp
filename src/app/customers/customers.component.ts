@@ -21,13 +21,19 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
    
-  this.fetchData();
-  console.log("array",this.customersView);
     this.route.params
-    .subscribe((params:Params)=>{
-      this.id = params['id'];
-      console.log(">>>>>>>>>", this.id);
+    .subscribe((params: Params) => {
+      this.id = params.key;
+      console.log("key of customer", this.id.value)
+      return;
     })
+  this.fetchData();
+  // console.log("array",this.customersView);
+  //   this.route.params
+  //   .subscribe((params:Params)=>{
+  //     this.id = params['id'];
+  //     console.log(">>>>>>>>>", this.id);
+  //   })
 
   }
   fetchData() {
@@ -42,6 +48,7 @@ export class CustomersComponent implements OnInit {
       );
   }
 }
+
 
 
 

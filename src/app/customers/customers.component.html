@@ -5,7 +5,7 @@
   </div>
   <hr>  
 <div  *ngFor="let customer of customersView  | keyvalue | filtered : filteredStatus : 'name'" >
-  <div class="card-deck"   *ngIf="customer.value.id == id">
+  <!-- <div class="card-deck"   *ngIf="customer.value.id == id"> -->
   <div class="col-md-7 col-sm-7">
   <div class="card">  
     <img class="card-img-top"  [src]="customer.value.file"  />
@@ -21,18 +21,6 @@
   </div>
   </div>
 </div>
-</div>
-  <!-- <div class="card-deck" *ngFor="let customer of newCustomer" >  
-<div class="row">
-  <div class="col-md-7 col-sm-7">
-    <img class="card-img-top"  [src]='customer.url' width=30% />
-  </div>
-  <div class="col-md-5 col-sm-7">
-    <h5 class="card-title">{{customer.name}}</h5>
-      <p class="card-text">{{customer.id}}</p>
-      <p class="card-text">{{customer.mobile_no}}</p>
-      <p class="card-text">{{customer.viewOrders}}</p>
-      <p class="card-text"><small class="text-muted">{{customer.address}}</small></p>
-  </div>
-</div>
-</div> -->
+
+
+<div></div>

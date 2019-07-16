@@ -1,7 +1,7 @@
 .card-body{
-  margin-left: 642px;
-  margin-top: -256px;
-  width: 215px;
+  margin-left: 379px;
+  margin-top: -320px;
+  width: 308px;
 }
 .card-deck{
   border: 1px solid #888; 
@@ -16,7 +16,14 @@
 }
 
 .card-img-top{
-  width : 30%;
+  width : 16%;
   height: 333px
 
+}
+.newForm {
+  margin-left: 87px;
+  margin-right: 575px;
+}
+.container {
+  width: 93%;
 }
