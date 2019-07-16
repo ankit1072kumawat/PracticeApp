@@ -73,8 +73,9 @@ export class EditCustomerComponent implements OnInit {
         email: this.editForm.value.email,
         address: this.editForm.value.address,
         file: this.url,
+        id: this.id
       }
-      // id: this.id
+      
     };
     console.log("OnSubmit",customers)
     this.editHttp.editCustomers(customers)
